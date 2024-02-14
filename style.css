@@ -1,0 +1,19 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #121827;
+}
+
+#sketchScreen {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#sketchScreen .box {
+  background-color: #d1d3d8;
+}
