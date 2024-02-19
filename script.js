@@ -5,7 +5,7 @@ const createBoxes = amount => {
   for (let index = 0; index < amount**2 ; index++) {
     const box = document.createElement('div');
     box.setAttribute('class', 'box');
-    box.setAttribute('style', `width:${boxWidth}px;height:${boxWidth}px;background-color:rgb(255, 255, 255);filter:brightness(99.9%)`);
+    box.setAttribute('style', `width:${boxWidth}px;height:${boxWidth}px;background-color:rgb(255, 255, 255)`);
     sketchScreen.appendChild(box);
   }
 }
@@ -14,7 +14,6 @@ const paintBlack = () => {
   const boxesNodeList = document.querySelectorAll('.box');
   boxesNodeList.forEach(box => {
     box.addEventListener('mouseenter', () => {
-      box.style.filter = 'brightness(99%)';
       box.style.backgroundColor = 'rgb(0,0,0)';
     });
   });
@@ -24,20 +23,21 @@ const paintRainbow = () => {
   const boxesNodeList = document.querySelectorAll('.box');
   boxesNodeList.forEach(box => {
     box.addEventListener('mouseenter', () => {
-      box.style.filter = 'brightness(99%)';
+
       const randomRgbValue = () => Math.floor(Math.random() * 256);
       box.style.backgroundColor = `rgb(${randomRgbValue()}, ${randomRgbValue()}, ${randomRgbValue()})`;
     });
   });
 }
 
-function paintDarken() {
+const paintDarken = () => {
   const boxesNodeList = document.querySelectorAll('.box');
   boxesNodeList.forEach(box => {
+  let value = 0;
     box.addEventListener('mouseenter', () => {
-      box.style.backgroundColor = 'rgb(255, 255, 255)';
-      const currentBrightness = box.style.filter.slice(11, 13);
-      box.style.filter = `brightness(${currentBrightness - 10}%)`;
+    if (value < 1) {
+      value += 0.1;
+      box.style.backgroundColor = `rgba(0, 0, 0, ${ value })`; };    
     });
   });
 }
