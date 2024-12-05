@@ -9,3 +9,11 @@ const createPixels = (amount, target) => {
 };
 
 createPixels(16, container);
+
+const pixels = document.querySelectorAll(".pixel");
+
+pixels.forEach((pixel) => {
+  pixel.addEventListener("mouseenter", () => {
+    pixel.style.backgroundColor = "black";
+  });
+});
